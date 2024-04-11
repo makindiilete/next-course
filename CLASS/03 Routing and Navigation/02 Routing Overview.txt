@@ -1,0 +1,6 @@
+-   page.tsx - A page that is publicly available
+-   layout.tsx - A page that defines the common layout for our pages
+-   loading.tsx - For showing loading UIs
+-   route.tsx - For creating apis
+-   not-found.tsx - For showing custom errors
+-   error.tsx - General custom error pages

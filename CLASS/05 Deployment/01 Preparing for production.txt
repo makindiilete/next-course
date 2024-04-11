@@ -1,0 +1,2 @@
+-   Before deploying for production, ensure you can build locally successfully by running 'npm run build' This way you
+save yourself creating production deployment only to see various errors in production console.

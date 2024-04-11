@@ -1,0 +1,17 @@
+As our route parameters grows, it might become more difficult to catch these parameters by creating nested folders.
+There is a better way.
+
+You can catch as many segments as possible using the syntax : [...slug]
+NOTE: Atleast a parameter must be passed for this to work else the page will land on 404 error page...
+To make parameters optional, you should use the syntax : [[...slug]]
+
+
+import React from "react";
+interface IProps {
+  params: { slug: string[] };
+}
+const ProductDetails = ({ params: { slug } }: IProps) => {
+  return <div>{`Product routes ==> ${slug}`}</div>;
+};
+
+export default ProductDetails;

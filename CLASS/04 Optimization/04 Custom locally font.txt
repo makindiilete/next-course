@@ -1,0 +1,1 @@
+-   Inside the public folder, a new 'font' dir, save the font U want to use inside the dir

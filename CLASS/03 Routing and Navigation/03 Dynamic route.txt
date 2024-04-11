@@ -1,0 +1,19 @@
+A dynamic route is a route/url with parameters e.g. users/12
+
+
+import React from "react";
+
+interface IProps {
+  params: { id: number };
+}
+const UserDetails = ({ params: { id } }: IProps) => {
+  return <div>User details page {id}</div>;
+};
+
+export default UserDetails;
+
+
+// Assignment
+Create a page with the route : /users/2/photos/3
+
+Check solution from attached images :  03 04.png ==> 03 06.png

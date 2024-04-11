@@ -1,0 +1,59 @@
+IMAGE : - import Image from "next/image";
+
+NextJs comes with an Image component which is preferrable to be used in NextJs app over the normal html img tag.
+-   It compresses image
+-   It resize the image based on device size
+
+WORKING WITH LOCALLY STORED IMAGES
+-   Create an 'images' folder inside the public folder
+-   Save an image in the images folder
+
+import coffee from "@/public/images/coffee.jpg";
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <main>
+      <Image src={coffee} alt="coffee" />
+    </main>
+  );
+}
+
+
+WORKING WITH REMOTE IMAGES
+
+To protect your application from malicious users, configuration is required in order to use external images.
+ This ensures that only external images from your account can be served from the Next.js Image Optimization API.
+ These external images can be configured with the remotePatterns property in your next.config.js file, as shown below:
+https://nextjs.org/docs/pages/api-reference/components/image#remotepatterns
+
+NOTE: - U always need to specify a width and height for remote images
+
+PROPS
+
+fill :- A boolean that causes the image to fill the parent element, which is useful when the width and height
+ are unknown.
+
+sizes : - A string, similar to a media query, that provides information about how wide the image will be at different
+ breakpoints. The value of sizes will greatly affect performance for images using fill or which are styled
+  to have a responsive size.
+
+import coffee from "@/public/images/coffee.jpg";
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <div>
+      <Image
+        src="https://advancly.com/wp-content/uploads/2022/07/advancly_advest_investor.png"
+        alt="Advancly"
+        // width={300}
+        // height={170}
+        fill
+        sizes="100vw"
+        objectFit="contain"
+        quality={100}
+      />
+    </div>
+  );
+}

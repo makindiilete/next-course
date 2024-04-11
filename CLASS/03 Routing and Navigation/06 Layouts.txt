@@ -1,0 +1,69 @@
+With NextJs Layout pages, we can create a common UIs that can be shared across multiple pages e.g. Sidebar UI, Navbar etc
+
+The Root Layout is the 'layout.tsx' in the app folder, and it defines a common UI structure, styles etc for all pages
+Every layout must have a children prop which should be a React.Node.
+
+CREATING A LAYOUT FOR ADMIN PAGES
+
+-   app/admin/layout.tsx ==> Admin Layout Component
+import React from "react";
+
+interface IProps {
+  children: React.ReactNode;
+}
+const AdminLayout = ({ children }: IProps) => {
+  return (
+    <div className="flex">
+      <aside className="bg-gray-400 min-h-dvh w-1/4 p-5 mr-5">
+        Admin Sidebar
+      </aside>
+      <div className="p-5">{children}</div>
+    </div>
+  );
+};
+
+export default AdminLayout;
+
+
+-   /admin/page.tsx ==> Admin Root Page
+
+import React from "react";
+import Link from "next/link";
+
+const AdminPage = () => {
+  return (
+    <div>
+      <h1>Admin HomePage</h1>
+      <br />
+      <button className="btn mb-5">
+        <Link href="/admin/dashboard">Dashboard</Link>
+      </button>
+    </div>
+  );
+};
+
+export default AdminPage;
+
+
+-   /admin/dashboard/page.tsx ==> Admin Dashboard Page
+
+import React from "react";
+import Link from "next/link";
+
+const AdminDashboard = () => {
+  return (
+    <div>
+      <button className="btn mb-5">
+        <Link href="/admin"> Go Back</Link>
+      </button>
+      <h1 className="text-xl">Welcome to Admin Dashboard</h1>
+      <br />
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+        consectetur dolorum eos, saepe voluptate voluptatem?
+      </p>
+    </div>
+  );
+};
+
+export default AdminDashboard;

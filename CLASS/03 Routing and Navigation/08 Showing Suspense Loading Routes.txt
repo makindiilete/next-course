@@ -1,0 +1,43 @@
+In React 18, we have the concept of suspense to show a loading UI while the route is being loaded or while waiting
+for data to be fetched....
+
+APPLYING SUSPENSE TO API DATA FETCH
+
+import React, { Suspense } from "react";
+import UserTable from "@/app/users/UserTable";
+import Link from "next/link";
+import Loader from "@/app/components/Loader";
+
+interface IProps {
+  searchParams: { sortOrder: string; direction: "asc" | "desc" };
+}
+const UsersPage = async ({ searchParams }: IProps) => {
+  return (
+    <>
+      <h1 className="underline">Users</h1>
+      <br />
+      <p>{JSON.stringify(searchParams)}</p>
+      <Link href="/users/new" className="btn btn-accent">
+        NEW USER
+      </Link>
+      <br />
+      {/*  Component wrapped inside a suspense to handle loading when users are bin fetched from the api*/}
+      <Suspense fallback={<Loader />}>
+        <UserTable
+          sortOrder={searchParams.sortOrder}
+          direction={searchParams.direction}
+        />
+      </Suspense>
+    </>
+  );
+};
+
+export default UsersPage;
+
+
+
+APPLYING SUSPENSE TO URL MOUNTING METHOD #1
+
+-   Create a 'loading.tsx' file in the root 'app' directory
+-   Add code for your loading compoonent
+-   Wrap your components with Suspense

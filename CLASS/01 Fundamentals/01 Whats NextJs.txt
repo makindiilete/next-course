@@ -1,0 +1,7 @@
+React is a library but NextJs is a complete framework built ontop of react which enables us build
+fast an search engine friendly application. Just like Angular and Vue, it comes with its own CLI, Router etc but more than
+Angular and Vue, it comes with Compiler and NodeJs runtime... With the NodeJS runtime we can write both
+frontend and backend code with the same Next framework.. D frontend code will be executed with Web browser
+and the backend code will be executed with NodeJs runtime.
+
+With NextJs, we have server side rendering and static site generation.

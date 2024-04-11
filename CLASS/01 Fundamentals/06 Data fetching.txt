@@ -1,0 +1,39 @@
+Same way we can render component on the client or render it from the server, so it is with data fetching..
+We can fetch data on the client or choose to fetch from the server.
+
+CLIENT SIDE DATA FETCHING
+-   useState() + useEffect()
+-   React Query
+
+DOWNSIDE OF CLIENT SIDE DATA FETCHING
+-   All the downside of client side rendering
+-   Extra roundtrip to server : - When a pure react loads, it loads the js and css and it will then go back to the
+server to fetch the needed data. This is an extra trip to the server
+
+FETCHING DATA WITH SERVER SIDE RENDERING
+
+import React from "react";
+
+interface User {
+  name: string;
+  id: number;
+  email: string;
+}
+const UsersPage = async () => {
+  //Fetching data in server components : - We fetch directly, no useState, no useEffect, no 'handleGetUsers' function
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const users: User[] = await res.json();
+  return (
+    <>
+      <h1 className="underline">Users</h1>
+      <br />
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export default UsersPage;

@@ -1,0 +1,5 @@
+-   npm install -g create-next-app@13.5.6
+-   npx create-next-app project-name
+-   Answer the questions asked to setup the project
+-   cd project-name
+-   npm run dev

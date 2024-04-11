@@ -1,0 +1,11 @@
+STATIC RENDERING: - NextJs will load this pages at build time and cache them, when next we load the pages, NextJs
+fetch the pages and render them from cache. Mostly useful for pages without dynamic content. D content always d same.
+
+DYNAMIC RENDERING : - A request is made to the server each time a page is rendered.
+
+We can see how static vs Dynamic rendering work in real time by making use of Date.now() function.
+
+-     <p>{new Date().toLocaleString()}</p> : - With this we can see the current date and time and refresh to see if it
+gets updated then it is dynamic, else if it rendered once and never update then it is static.
+
+NOTE:- U need to create a production build with 'npm run build' to see this in action

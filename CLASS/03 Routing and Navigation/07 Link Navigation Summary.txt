@@ -1,0 +1,5 @@
+LINK ==>  <Link href="/admin"> Go Back</Link>
+
+-   Only downloads content of the target page
+-   Pre-fetches links that are in view port : - NextJs will fetch pages you are linking to before you click to go there.
+-   Caches pages on the client

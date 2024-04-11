@@ -1,0 +1,41 @@
+Routing in nextjs is based on file system.. The routing system in nextjs is based on convention and no
+configuration and it says PAGES MUST BE IN LOWER CASE FOR THE FILE/ROUTE TO BE PUBLICLY ACCESSIBLE...
+
+CREATING A /users ROUTE : -
+-   Create a dir inside the app folder "users" >> Inside the users dir, create a 'page.tsx'
+-   Return a react component that will be loaded in the web browser when this route is called
+
+import React from 'react';
+
+const UsersPage = () => {
+    return (
+        <div>
+            Users page
+        </div>
+    );
+};
+
+export default UsersPage;
+
+ -  Now we can navigate to http://localhost:3000/users and our page will be rendered
+
+CREATING A /users/new ROUTE to handle new user creation : -
+-   Create a new dir 'new' inside the 'users' dir >> Inside the 'new' dir, create a file 'page.tsx'
+
+
+NAVIGATING : - Navigate to a page with click action
+
+import Link from "next/link";
+
+export default function Home() {
+  return (
+   <main>
+     <h1>Hello World...</h1>
+     // navigates to the 'users' directory page
+       <Link href="/users">
+           <p className="text-pink-800">Users</p>
+       </Link>
+   </main>
+  )
+}
+

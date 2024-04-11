@@ -1,0 +1,26 @@
+CSS modules is used to scope styles to a component or page. It aims to solve class name clashes.
+
+-   A CSS module is define with fileName.module.css.
+-   Class name should be in camel case because every class is a javascript object i.e. 'classContainer' instead of
+'class-container'.
+
+//ProductCard.tsx
+import AddToCart from "@/app/components/AddToCart";
+import styles from "./ProductCard.module.css";
+
+const ProductCard = () => {
+  return (
+    <div className={styles.card}>
+      <AddToCart />
+    </div>
+  );
+};
+
+export default ProductCard;
+
+
+//ProductCard.module.css
+.card{
+	padding: 1rem;
+	border: 1px solid #ccc;
+}

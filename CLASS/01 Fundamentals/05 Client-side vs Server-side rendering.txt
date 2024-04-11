@@ -1,0 +1,96 @@
+Anywhere you hear about NextJs, there is always a popular feature that is always mention i.e. 'Server-side Rendering',
+What does this really mean and how does it differs from 'Client-Side Rendering'?
+
+In a typical react application, all the code is bundled into a javascript file which is then rendered in the web
+browser and because web browsers understands javascript, the application is rendered in the browser.
+
+DISADVANTAGES : -
+-   because search engine cannot read javascript file, this is one of the main reason while react apps is not
+ search engine friendly.
+
+-   The more the application grows, the larger the bundle file gets and this can be resource intensive sometimes
+leading to 'out of memory heap' error
+
+-   If the bundle contains any api keys, this will also be served to the browser
+
+OVERCOMING THE DISADVANTAGES WITH SERVER SIDE RENDERING
+With server side rendering, we overcome all this challenges encountered with client side rendering, all our components
+are loaded from the server, and we only send the required components to the clients and prevent a large
+unnecessary bundle i.e. even though our application contains several components, modules, pages, we do not bundle
+all the code and send them to the client at once instead we send the current component needed for the current page.
+
+And because we send the actual content, the actual html to the client, SEO is greatly improved.
+
+We can also keep sensitive data to the server.
+
+DOWNSIDE OF SERVER SIDE RENDERING: -
+NOTE: - In NextJs, all components inside the app folder are server components by default...
+With server side rendering, we loose some client side functionalities : -
+-   Listen to browser events : - onClick, onSubmit etc
+-   Access browser APIs
+-   Maintain state : - localStorage, sessionStorage
+-   Use effects etc
+
+To solve this, we use a mix of both server and client side in a real world application. So we always use server side
+and we default to client when we need to make use of these client side functionalities..
+
+REAL LIFE EXAMPLE
+You are building a shopping app containing the components below:-
+-   NavBar
+-   SideBar
+-   ProductList
+-   ProductCard
+-   Pagination
+-   Footer
+
+All these can stay on the server but the ProductCard will contain a client side functionality because we will be adding
+a product to cart which involves a button click event which is a client side functionality.
+
+TWO POSSIBLE SOLUTIONS
+-   We can keep the ProductCard component on the client side while we render the remaining components on the server
+
+'use client'
+const ProductCard = () => {
+    return (
+        <div>
+            <button onClick={() => console.log('Add to cart')}>Add to Cart</button>
+        </div>
+    );
+};
+
+export default ProductCard;
+
+The 'use client' will convert this component to a client side component including all its children
+
+-   We can as well extract out a reusable component that involves the cart addition i.e. AddToCart and keep this on the
+client instead of moving all the ProductCard on the client. This way other items the product card needs to render can
+stay on the server and the component involving the click event comes to the client side.
+
+
+//ProductCard
+import AddToCart from "@/app/components/AddToCart";
+
+const ProductCard = () => {
+  return (
+    <div>
+      <AddToCart />
+    </div>
+  );
+};
+
+export default ProductCard;
+
+
+//AddToCart
+"use client";
+import React from "react";
+
+const AddToCart = () => {
+  return (
+    <div>
+      <button onClick={() => console.log("Add to cart")}>Add to Cart</button>
+    </div>
+  );
+};
+
+export default AddToCart;

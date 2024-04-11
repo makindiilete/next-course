@@ -1,0 +1,6 @@
+-   The 'app' folder : - This is the AppRouter and the container for our routing system.. Unlike normal
+react, we do not need to create routes separately, each file created is a route on it own.
+
+-   The 'public' folder : - This is where we keep our assets, fonts etc
+
+-   The 'global.css' file is like the App.css of react where our general css lives
